@@ -5,18 +5,19 @@
 
 # Teslo API
 
-1. Clonar proyecto
+1. Clonar proyecto e instalar dependencias
 2. ```yarn install```
-3. Clonar el archivo ```.env.template``` y renombrarlo a ```.env```
-4. Cambiar las variables de entorno
-5. Levantar la base de datos
+5. Clonar el archivo ```.env.template``` y renombrarlo a ```.env```
+6. Cambiar las variables de entorno
+7. Levantar la base de datos
 ```
 docker-compose up -d
 ```
 
-6. Levantar: ```yarn start:dev```
+1. Levantar: 
+2. ```yarn start:dev```
 
-7. Ejecutar SEED 
+5. Ejecutar SEED 
 ```
 http://localhost:3000/api/seed
 ```
@@ -34,15 +35,15 @@ docker compose -f docker-compose.prod.yml build
 ## Docker Repo Name
 [klerith/teslo-shop-cors:latest](https://hub.docker.com/repository/docker/klerith/teslo-shop-cors/general)
 
-## Implementar Docker Build 
+## Implementar Docker Buildx para multiplataforma (amd64, arm64) 
 ```
 docker buildx create --name mybuilder --driver docker-container --bootstrap --use
 ```
-## Constar al nuevo builder
+## Construir el nuevo builder
 ```
 docker buildx use mybuilder
 ```
-## Docker Build para dos plataformas
+## Docker Build para subir dos plataformas en dockerhub  
 ```
 docker buildx build --platform linux/amd64,linux/arm64 -t gregoryreyesp/nest-app-tienda:1.0.1 --push .
 ```
