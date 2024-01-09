@@ -23,27 +23,21 @@ http://localhost:3000/api/seed
 ```
 
 
+## Docker Repo Name
+[klerith/teslo-shop-cors:latest](https://hub.docker.com/repository/docker/klerith/teslo-shop-cors/general)
 
-# Production notes:
+## Implementar Docker Buildx para multiplataforma (amd64, amd64/v2) 
+```
+docker buildx create --name mybuilder --bootstrap --use
+```
+## Production notes:
 
-Ejecutar este comando
+Ejecutar este comando cuando este en producción
 ```
 docker compose -f docker-compose.prod.yml build
 ```
 
-
-## Docker Repo Name
-[klerith/teslo-shop-cors:latest](https://hub.docker.com/repository/docker/klerith/teslo-shop-cors/general)
-
-## Implementar Docker Buildx para multiplataforma (amd64, arm64) 
-```
-docker buildx create --name mybuilder --driver docker-container --bootstrap --use
-```
-## Construir el nuevo builder
-```
-docker buildx use mybuilder
-```
 ## Docker Build para subir dos plataformas en dockerhub  
 ```
-docker buildx build --platform linux/amd64,linux/arm64 -t gregoryreyesp/nest-app-tienda:1.0.1 --push .
+docker buildx build --platform linux/amd64,linux/amd64/v2 -t gregoryreyesp/nest-app-tienda:1.0.1 --push .
 ```
